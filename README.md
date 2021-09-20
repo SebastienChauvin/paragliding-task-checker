@@ -1,5 +1,5 @@
 # paragliding-task-checker
-A very simple tool to check paragliding tasks.
+A very simple tool to check paragliding tasks.  View at https://scottyob.github.io/paragliding-task-checker/
 
 ## Rules
 * Did you launch after the window if set
