@@ -7,7 +7,3 @@ A very simple tool to check paragliding tasks.
 * Did you then enter the waypoints in order?
 * Did you then enter the ESS before the ESS deadline is set?
 * Did you then enter the goal cylinder before the Goal deadline if set?
-
-## About
-Feel free to modify.  At the moment, assumes start time SSS, and that we're just entering cylinders.  Also ignores all height
-Mostly as I have no idea how anything else works.

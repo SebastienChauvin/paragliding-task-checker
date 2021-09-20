@@ -1,0 +1,151 @@
+{
+    "version": 1,
+    "taskType": "CLASSIC",
+    "turnpoints": [
+        {
+            "radius": 1000,
+            "waypoint": {
+                "lon": -119.10143055555555,
+                "lat": 36.7694,
+                "altSmoothed": 1415,
+                "name": "DNLNCH",
+                "description": "DUNLAP LAUNCH"
+            },
+            "type": "TAKEOFF"
+        },
+        {
+            "radius": 1000,
+            "waypoint": {
+                "lon": -119.10143055555555,
+                "lat": 36.7694,
+                "altSmoothed": 1415,
+                "name": "DNLNCH",
+                "description": "DUNLAP LAUNCH"
+            },
+            "type": "SSS"
+        },
+        {
+            "radius": 1000,
+            "waypoint": {
+                "lon": -119.12141388888888,
+                "lat": 36.78143333333333,
+                "altSmoothed": 1511,
+                "name": "49917",
+                "description": "49917"
+            }
+        },
+        {
+            "radius": 1000,
+            "waypoint": {
+                "lon": -119.07965,
+                "lat": 36.737116666666665,
+                "altSmoothed": 1053,
+                "name": "LASTCH",
+                "description": "LAST CHANCE"
+            }
+        },
+        {
+            "radius": 1500,
+            "waypoint": {
+                "lon": -119.1189861111111,
+                "lat": 36.789113888888885,
+                "altSmoothed": 1623,
+                "name": "DELILA",
+                "description": "DELILAH"
+            }
+        },
+        {
+            "radius": 400,
+            "waypoint": {
+                "lon": -119.10143055555555,
+                "lat": 36.7694,
+                "altSmoothed": 1415,
+                "name": "DNLNCH",
+                "description": "DUNLAP LAUNCH"
+            }
+        },
+        {
+            "radius": 1000,
+            "waypoint": {
+                "lon": -119.12944722222221,
+                "lat": 36.740186111111115,
+                "altSmoothed": 568,
+                "name": "TURKEY",
+                "description": "TURKEY FARM"
+            }
+        },
+        {
+            "radius": 1000,
+            "waypoint": {
+                "lon": -119.12141388888888,
+                "lat": 36.78143333333333,
+                "altSmoothed": 1511,
+                "name": "49917",
+                "description": "49917"
+            }
+        },
+        {
+            "radius": 1000,
+            "waypoint": {
+                "lon": -119.07965,
+                "lat": 36.737116666666665,
+                "altSmoothed": 1053,
+                "name": "LASTCH",
+                "description": "LAST CHANCE"
+            }
+        },
+        {
+            "radius": 400,
+            "waypoint": {
+                "lon": -119.10143055555555,
+                "lat": 36.7694,
+                "altSmoothed": 1415,
+                "name": "DNLNCH",
+                "description": "DUNLAP LAUNCH"
+            }
+        },
+        {
+            "radius": 1000,
+            "waypoint": {
+                "lon": -119.13448333333334,
+                "lat": 36.72983055555556,
+                "altSmoothed": 881,
+                "name": "GRNY",
+                "description": "GRANY S KNOB"
+            }
+        },
+        {
+            "radius": 2000,
+            "waypoint": {
+                "lon": -119.10748055555555,
+                "lat": 36.72888888888889,
+                "altSmoothed": 568,
+                "name": "DNLPLZ",
+                "description": "DUNLAP LZ"
+            },
+            "type": "ESS"
+        },
+        {
+            "radius": 400,
+            "waypoint": {
+                "lon": -119.10748055555555,
+                "lat": 36.72888888888889,
+                "altSmoothed": 568,
+                "name": "DNLPLZ",
+                "description": "DUNLAP LZ"
+            }
+        }
+    ],
+    "sss": {
+        "type": "RACE",
+        "direction": "EXIT",
+        "timeGates": [
+            "19:30:00Z"
+        ]
+    },
+    "goal": {
+        "type": "CYLINDER",
+        "deadline": "06:00:00Z"
+    },
+    "earthModel": "WGS84"
+}
