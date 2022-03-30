@@ -11,3 +11,17 @@ A very simple tool to check paragliding tasks.  View at https://scottyob.github.
 ## About
 Feel free to modify.  At the moment, assumes start time SSS, and that we're just entering cylinders.  Also ignores all height
 Mostly as I have no idea how anything else works.
+
+## Developing
+
+Guide to setting up on Ubuntu
+
+1. Setup nvm
+```
+curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash 
+# (logout and in as our bash profile has changed)
+nvm install --lts
+
+npm install
+npm start
+```

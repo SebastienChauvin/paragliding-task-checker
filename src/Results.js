@@ -120,10 +120,11 @@ function Results(props) {
                 </MapContainer>
 
             </div>
-            <div className="flightProgress" style={{ height: "80px", backgroundColor: "blue" }} onMouseMove={(event) => {
-                let percentage = (event.screenX - event.target.offsetLeft) / event.target.clientWidth;
-                setProgress(percentage)
-            }}>
+            <div className="flightProgress" style={{ height: "80px", backgroundColor: "blue", display: 'flex' }}>
+                <input type="range" min="1" max="100" class="slider" id="myRange" style={{ flexGrow: 1 }} onChange={(event) => {
+                    let percentage = event.target.value / 100;
+                    setProgress(percentage)
+                }} />
                 <p>{time}</p>
             </div>
         </div>
