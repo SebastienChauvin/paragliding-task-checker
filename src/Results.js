@@ -121,7 +121,7 @@ function Results(props) {
 
             </div>
             <div className="flightProgress" style={{ height: "80px", backgroundColor: "blue", display: 'flex' }}>
-                <input type="range" min="1" max="100" class="slider" id="myRange" style={{ flexGrow: 1 }} onChange={(event) => {
+                <input type="range" min="1" max="100" class="slider" id="myRange" style={{ flexGrow: 1 }} value={progress * 100} onChange={(event) => {
                     let percentage = event.target.value / 100;
                     setProgress(percentage)
                 }} />

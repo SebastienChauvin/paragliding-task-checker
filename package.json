@@ -17,6 +17,7 @@
     "react-dropzone": "^11.4.0",
     "react-leaflet": "^3.2.1",
     "react-scripts": "4.0.3",
+    "shrink-string": "^3.0.9",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

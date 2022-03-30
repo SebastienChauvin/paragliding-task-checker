@@ -10223,6 +10223,11 @@
   "resolved" "https://registry.npmjs.org/shellwords/-/shellwords-0.1.1.tgz"
   "version" "0.1.1"
 
+"shrink-string@^3.0.9":
+  "integrity" "sha512-G5Gt8HEzJsg++Bx+1Cow8pvwlbQhFrQMengh2QDx6eUgbjIEQsn88DEmRRnvu2ANVjGdP2ajVQMM/bFT6A0igA=="
+  "resolved" "https://registry.npmjs.org/shrink-string/-/shrink-string-3.0.9.tgz"
+  "version" "3.0.9"
+
 "side-channel@^1.0.4":
   "integrity" "sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw=="
   "resolved" "https://registry.npmjs.org/side-channel/-/side-channel-1.0.4.tgz"

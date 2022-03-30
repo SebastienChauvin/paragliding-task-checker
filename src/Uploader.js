@@ -1,5 +1,8 @@
 import React, { useMemo } from 'react'
 import { useDropzone } from 'react-dropzone'
+import { useState } from 'react';
+import { useEffect } from 'react';
+const { compress, decompress } = require('shrink-string')
 
 const baseStyle = {
     flex: 1,
@@ -39,7 +42,7 @@ function StyledDropzone(props) {
         isDragReject,
     } = useDropzone({
         onDrop: async acceptedFiles => {
-            if(acceptedFiles.length > 0) {
+            if (acceptedFiles.length > 0) {
                 const file = acceptedFiles[0];
                 const contents = await file.text();
                 props.setter(contents);
@@ -68,22 +71,76 @@ function StyledDropzone(props) {
     );
 }
 
+const useHash = () => {
+    const [hash, setHash] = React.useState(() => window.location.hash);
+  
+    const hashChangeHandler = React.useCallback(() => {
+      setHash(window.location.hash);
+    }, []);
+  
+    React.useEffect(() => {
+      window.addEventListener('hashchange', hashChangeHandler);
+      return () => {
+        window.removeEventListener('hashchange', hashChangeHandler);
+      };
+    }, []);
+  
+    const updateHash = React.useCallback(
+      newHash => {
+        if (newHash !== hash) window.location.hash = newHash;
+      },
+      [hash]
+    );
+  
+    return [hash, updateHash];
+  };
+
 function Uploader(props) {
     const style = {
         ...baseStyle,
         color: "green",
         borderColor: "green"
     };
+
+    const [contents, setContents] = useState();
+    const [hash, setHash] = useHash();
+
+    // Sets a new URL when asked
+    useEffect(() => {
+        props.fileSetter(contents);
+
+        async function computeUrl() {
+            let newHash = "";
+            if(contents) {
+                newHash = await compress(contents)
+            }
+            setHash(newHash);
+        }
+        if (props.inUrl) {
+            computeUrl();
+        }
+    }, [contents, props])
+
+    // Loads the contents from a URL
+    useEffect(() => {
+        async function decodeContents(hash) {
+            setContents(await decompress(hash));
+        }
+        if (hash && props.inUrl) {
+            decodeContents(hash);
+        }
+    }, [hash])
+
     const check = <div className="container" style={style}>
         <p>{props.message + ' \u2713'}</p>
     </div>
 
     const fileDrop = StyledDropzone({
         message: props.message,
-        setter: props.fileSetter
+        setter: setContents
     });
-    
-    if(props.file)
+
+    if (props.file)
         return check;
     return fileDrop;
 }

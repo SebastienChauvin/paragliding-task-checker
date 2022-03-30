@@ -24,19 +24,26 @@ function App() {
   const xctskUploader = Uploader({
     message: "Upload xctsk",
     file: tsk,
-    fileSetter: setTsk
+    fileSetter: setTsk,
+    inUrl: true,
   });
 
   // Component for uploading the files
-  let content = <div style={style}>
-    {igcUploader}
-    {xctskUploader}
+  let pageURL = new URL(window.location);
+  pageURL.hash = "";
+  let content = <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
+    <h1><a href={pageURL.toString()} style={{ color: 'white' }}>Paraglider Task Checker</a></h1>
+    <div style={style}>
+      {igcUploader}
+      {xctskUploader}
+    </div>
   </div>;
 
   // Component for showing the results given the files
   if (tsk != null && igc != null) {
     content = <Results tsk={tsk} igc={igc} />;
   }
+
 
   return (
 
