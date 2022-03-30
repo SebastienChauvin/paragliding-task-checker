@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/paragliding-task-checker/static/css/main.fd4360c4.chunk.css",
-    "main.js": "/paragliding-task-checker/static/js/main.442b229b.chunk.js",
-    "main.js.map": "/paragliding-task-checker/static/js/main.442b229b.chunk.js.map",
-    "runtime-main.js": "/paragliding-task-checker/static/js/runtime-main.38a4cf92.js",
-    "runtime-main.js.map": "/paragliding-task-checker/static/js/runtime-main.38a4cf92.js.map",
+    "main.js": "/paragliding-task-checker/static/js/main.663cdf7d.chunk.js",
+    "main.js.map": "/paragliding-task-checker/static/js/main.663cdf7d.chunk.js.map",
+    "runtime-main.js": "/paragliding-task-checker/static/js/runtime-main.ce0e51f7.js",
+    "runtime-main.js.map": "/paragliding-task-checker/static/js/runtime-main.ce0e51f7.js.map",
     "static/css/2.b4ebbe46.chunk.css": "/paragliding-task-checker/static/css/2.b4ebbe46.chunk.css",
-    "static/js/2.5ad9c5a8.chunk.js": "/paragliding-task-checker/static/js/2.5ad9c5a8.chunk.js",
-    "static/js/2.5ad9c5a8.chunk.js.map": "/paragliding-task-checker/static/js/2.5ad9c5a8.chunk.js.map",
-    "static/js/3.22613716.chunk.js": "/paragliding-task-checker/static/js/3.22613716.chunk.js",
-    "static/js/3.22613716.chunk.js.map": "/paragliding-task-checker/static/js/3.22613716.chunk.js.map",
+    "static/js/2.2b85be50.chunk.js": "/paragliding-task-checker/static/js/2.2b85be50.chunk.js",
+    "static/js/2.2b85be50.chunk.js.map": "/paragliding-task-checker/static/js/2.2b85be50.chunk.js.map",
+    "static/js/3.b4afaffa.chunk.js": "/paragliding-task-checker/static/js/3.b4afaffa.chunk.js",
+    "static/js/3.b4afaffa.chunk.js.map": "/paragliding-task-checker/static/js/3.b4afaffa.chunk.js.map",
     "index.html": "/paragliding-task-checker/index.html",
     "static/css/2.b4ebbe46.chunk.css.map": "/paragliding-task-checker/static/css/2.b4ebbe46.chunk.css.map",
     "static/css/main.fd4360c4.chunk.css.map": "/paragliding-task-checker/static/css/main.fd4360c4.chunk.css.map",
-    "static/js/2.5ad9c5a8.chunk.js.LICENSE.txt": "/paragliding-task-checker/static/js/2.5ad9c5a8.chunk.js.LICENSE.txt"
+    "static/js/2.2b85be50.chunk.js.LICENSE.txt": "/paragliding-task-checker/static/js/2.2b85be50.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.38a4cf92.js",
+    "static/js/runtime-main.ce0e51f7.js",
     "static/css/2.b4ebbe46.chunk.css",
-    "static/js/2.5ad9c5a8.chunk.js",
+    "static/js/2.2b85be50.chunk.js",
     "static/css/main.fd4360c4.chunk.css",
-    "static/js/main.442b229b.chunk.js"
+    "static/js/main.663cdf7d.chunk.js"
   ]
 }
