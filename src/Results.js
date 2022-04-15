@@ -43,8 +43,10 @@ function Results(props) {
   let turnpointTimes = [];
   let taskDuration = 0;
   let essIndex = 0;
-  for (let i = 0; i < igc.fixes.length && i / igc.fixes.length <
-  progress; i++) {
+
+  for (let i = 0;
+      i < igc.fixes.length && i / igc.fixes.length < progress;
+      i++) {
     const fix = igc.fixes[i];
     const turnpoint = task.turnpoints[turnpointIndex];
 
@@ -90,16 +92,18 @@ function Results(props) {
       turnpointIndex++;
     }
   }
+  const valid = task.turnpoints.length === turnpointIndex;
   const addResult = (str) => {
-    turnpoints.push(<pre style={{fontSize:14}}>{str}</pre>)
-  }
+    turnpoints.push(<pre style={{fontSize: 14}}>{str}</pre>);
+  };
   addResult(`Heure début: ${turnpointTimes[0]}`);
-  addResult(`Heure ESS: ${turnpointTimes.[essIndex]}`);
-  addResult(`Heure fin: ${turnpointTimes.slice(-1)[0]}`);
-  addResult(`Durée task: ${formatDuration(taskDuration)}`);
-
-
-
+  if (essIndex) addResult(`Heure ESS: ${turnpointTimes.[essIndex]}`);
+  if (valid) {
+    addResult(`Heure fin: ${turnpointTimes.slice(-1)[0]}`);
+    addResult(`Durée task: ${formatDuration(taskDuration)}`);
+  } else {
+    addResult('Non valide');
+  }
 
   // Complete filling in all the waypoints we didn't get.
   for (let i = task.turnpoints.length - 1; i >= turnpointIndex; i--) {
@@ -140,7 +144,7 @@ function Results(props) {
 
   return <div style={containerStyle}>
     <div style={{display: 'flex', flexDirection: 'column', overflow: 'auto'}}>
-      <h2>All turnpoints</h2>
+      <h2>Challenge Charance</h2>
       {turnpoints}
     </div>
     <div className="rightHandContainer"
