@@ -27,13 +27,15 @@ const containerStyle = {
 };
 
 function formatDuration(durationSec) {
-  return new Date(durationSec*1000).toISOString().substr(12, 7);
+  return new Date(durationSec * 1000).toISOString().substr(12, 7);
 }
 
 function Results(props) {
   const {name, wing} = props;
   let igc = IGCParser.parse(props.igc);
   const [progress, setProgress] = useState(1);
+  const [sent, setSent] = useState(false);
+  const [entryReceived, setEntryReceived] = useState(false);
 
   let turnpointIndex = 0;
   let turnpoints = [];  // Turnpoints to show
@@ -75,10 +77,14 @@ function Results(props) {
             zIndex: i,
           }}
           >
-            <small style={{color: 'white'}}>{turnpoint.waypoint.description}</small>
+            <small
+                style={{color: 'white'}}>{turnpoint.waypoint.description}</small>
             <small>{fix.time}</small>
-            <small style={{opacity: turnpointIndex === 0 ? 0 : 1, color: ess ? 'white' : 'grey'}}>{formatDuration(durationSec)}</small>
-          </div>
+            <small style={{
+              opacity: turnpointIndex === 0 ? 0 : 1,
+              color: ess ? 'white' : 'grey',
+            }}>{formatDuration(durationSec)}</small>
+          </div>,
       );
       let center = [turnpoint.waypoint.lat, turnpoint.waypoint.lon];
       circles.push(<Circle center={center}
@@ -93,7 +99,14 @@ function Results(props) {
     }
   }
   const valid = task.turnpoints.length === turnpointIndex;
-  const saveEntry = { igc: props.igc, valid, date: igc.date, name, wing, };
+  const saveEntry = {igc: props.igc, valid, date: igc.date, name, wing};
+  if (!sent) {
+    fetch('https://g.co', { method: 'POST', body: JSON.stringify(saveEntry)}).then((resp) => {
+      setEntryReceived(resp.ok);
+    })
+    setSent(true);
+  }
+
   const addResult = (str) => {
     turnpoints.push(<pre style={{fontSize: 14}}>{str}</pre>);
   };
@@ -106,7 +119,7 @@ function Results(props) {
     addResult('Non valide');
   }
 
-  addResult(JSON.stringify(saveEntry, null, 2));
+  addResult(sent ? 'Envoyé' : '' + ' ' + entryReceived ? ', reçu' : '');
 
   // Complete filling in all the waypoints we didn't get.
   for (let i = task.turnpoints.length - 1; i >= turnpointIndex; i--) {
@@ -131,11 +144,12 @@ function Results(props) {
     </div>);
     let center = [turnpoint.waypoint.lat, turnpoint.waypoint.lon];
 
-    circles.push(<Circle center={center} pathOptions={{
-      color: color,
-      fillColor: fillColor,
-      opacity: opacity,
-    }}
+    circles.push(<Circle center={center}
+                         pathOptions={{
+                           color: color,
+                           fillColor: fillColor,
+                           opacity: opacity,
+                         }}
                          radius={turnpoint.radius}
                          key={'turnpoint-circle-' + i}/>);
   }
