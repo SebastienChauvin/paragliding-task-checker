@@ -31,6 +31,7 @@ function formatDuration(durationSec) {
 }
 
 function Results(props) {
+  const {name, wing} = props;
   let igc = IGCParser.parse(props.igc);
   const [progress, setProgress] = useState(1);
 
@@ -92,6 +93,7 @@ function Results(props) {
     }
   }
   const valid = task.turnpoints.length === turnpointIndex;
+  const saveEntry = { igc: props.igc, valid, date: igc.date, name, wing, };
   const addResult = (str) => {
     turnpoints.push(<pre style={{fontSize: 14}}>{str}</pre>);
   };
@@ -103,6 +105,8 @@ function Results(props) {
   } else {
     addResult('Non valide');
   }
+
+  addResult(JSON.stringify(saveEntry, null, 2));
 
   // Complete filling in all the waypoints we didn't get.
   for (let i = task.turnpoints.length - 1; i >= turnpointIndex; i--) {
