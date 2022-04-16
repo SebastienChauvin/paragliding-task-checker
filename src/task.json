@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "taskType": "CLASSIC",
+  "turnpoints": [
+    {
+      "radius": 200,
+      "waypoint": {
+        "lon": 6.0208001136779785,
+        "lat": 44.56801986694336,
+        "altSmoothed": 1517,
+        "name": "WPT1",
+        "description": "Déco",
+        "isUnknown": true
+      },
+      "type": "SSS"
+    },
+    {
+      "radius": 1500,
+      "waypoint": {
+        "lon": 6.046289920806885,
+        "lat": 44.591468811035156,
+        "altSmoothed": 1643,
+        "name": "WPT2",
+        "description": "Brêche",
+        "isUnknown": true
+      }
+    },
+    {
+      "radius": 4450,
+      "waypoint": {
+        "lon": 5.932980060577393,
+        "lat": 44.627140045166016,
+        "altSmoothed": 2647,
+        "name": "WPT3",
+        "description": "Clappe",
+        "isUnknown": true
+      }
+    },
+    {
+      "radius": 550,
+      "waypoint": {
+        "lon": 5.994440078735352,
+        "lat": 44.551109313964844,
+        "altSmoothed": 1058,
+        "name": "WPT4",
+        "description": "Corréo",
+        "isUnknown": true
+      },
+      "type": "ESS"
+    },
+    {
+      "radius": 3600,
+      "waypoint": {
+        "lon": 6.046289920806885,
+        "lat": 44.591468811035156,
+        "altSmoothed": 1643,
+        "name": "WPT2",
+        "description": "Déco",
+        "isUnknown": true
+      }
+    }
+  ],
+  "sss": {
+    "type": "ELAPSED-TIME",
+    "direction": "EXIT",
+    "timeGates": [
+      "05:00:00Z"
+    ]
+  },
+  "goal": {
+    "type": "CYLINDER",
+    "deadline": "21:00:00Z"
+  },
+  "earthModel": "WGS84"
+}

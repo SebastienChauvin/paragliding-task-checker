@@ -13,20 +13,6 @@ const style = {
 function App() {
   // State for IGC and XCTSK uploads
   const [igc, setIgc] = useState();
-  const [tsk, setTsk] = useState();
-
-  // Uploader views
-  const igcUploader = Uploader({
-    message: "Upload igc file",
-    file: igc,
-    fileSetter: setIgc,
-  });
-  const xctskUploader = Uploader({
-    message: "Upload xctsk",
-    file: tsk,
-    fileSetter: setTsk,
-    inUrl: true,
-  });
 
   // Component for uploading the files
   let pageURL = new URL(window.location);
@@ -34,14 +20,13 @@ function App() {
   let content = <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
     <h1><a href={pageURL.toString()} style={{ color: 'white' }}>Paraglider Task Checker</a></h1>
     <div style={style}>
-      {igcUploader}
-      {xctskUploader}
+      <Uploader file={igc} fileSetter={setIgc} message={'Fichier igc'}/>
     </div>
   </div>;
 
   // Component for showing the results given the files
-  if (tsk != null && igc != null) {
-    content = <Results tsk={tsk} igc={igc} />;
+  if (igc != null) {
+    content = <Results igc={igc} />;
   }
 
 

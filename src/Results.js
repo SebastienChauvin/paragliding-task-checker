@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {MapContainer, TileLayer, Circle, Polyline} from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import moment from 'moment';
+import task from './task.json';
 
 const IGCParser = require('igc-parser');
 const geolib = require('geolib');
@@ -26,11 +27,10 @@ const containerStyle = {
 };
 
 function formatDuration(durationSec) {
-  return `${Math.floor(durationSec / 60)}:${durationSec % 60}`;
+  return new Date(durationSec*1000).toISOString().substr(12, 7);
 }
 
 function Results(props) {
-  let task = JSON.parse(props.tsk);
   let igc = IGCParser.parse(props.igc);
   const [progress, setProgress] = useState(1);
 
@@ -38,7 +38,6 @@ function Results(props) {
   let turnpoints = [];  // Turnpoints to show
   let circles = []; // Circles to show on the map
   let positions = [];
-  let preStartPositions = [];
 
   let turnpointTimes = [];
   let taskDuration = 0;
@@ -75,10 +74,10 @@ function Results(props) {
             zIndex: i,
           }}
           >
-            <small>{turnpoint.waypoint.description}{fix.time}<br/>{
-              formatDuration(durationSec)}
-            </small>
-          </div>,
+            <small style={{color: 'white'}}>{turnpoint.waypoint.description}</small>
+            <small>{fix.time}</small>
+            <small style={{opacity: turnpointIndex === 0 ? 0 : 1, color: ess ? 'white' : 'grey'}}>{formatDuration(durationSec)}</small>
+          </div>
       );
       let center = [turnpoint.waypoint.lat, turnpoint.waypoint.lon];
       circles.push(<Circle center={center}
@@ -97,7 +96,7 @@ function Results(props) {
     turnpoints.push(<pre style={{fontSize: 14}}>{str}</pre>);
   };
   addResult(`Heure début: ${turnpointTimes[0]}`);
-  if (essIndex) addResult(`Heure ESS: ${turnpointTimes.[essIndex]}`);
+  if (essIndex) addResult(`Heure ESS: ${turnpointTimes[essIndex]}`);
   if (valid) {
     addResult(`Heure fin: ${turnpointTimes.slice(-1)[0]}`);
     addResult(`Durée task: ${formatDuration(taskDuration)}`);
@@ -161,7 +160,6 @@ function Results(props) {
               attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
               url="https://{s}.tile.jawg.io/jawg-terrain/{z}/{x}/{y}{r}.png?access-token=OCSVqPtVG4tEq4zlKGa0sA3LW6bC5l528PJhTuBSPZ5BPvbjemWIyzaHd15iYV11"
           /> {circles}
-          <Polyline positions={preStartPositions} color="gray"/>
           <Polyline positions={positions}/>
         </MapContainer>
 
