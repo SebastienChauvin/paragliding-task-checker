@@ -42,3 +42,10 @@
   height: 100vh; */
   flex-grow: 1;
 }
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

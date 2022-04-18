@@ -1,8 +1,9 @@
 import {useState} from 'react';
-import {MapContainer, TileLayer, Circle, Polyline} from 'react-leaflet';
+import {Circle, MapContainer, Polyline, TileLayer} from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import moment from 'moment';
 import task from './task.json';
+import {formatDuration} from './utils';
 
 const IGCParser = require('igc-parser');
 const geolib = require('geolib');
@@ -25,10 +26,6 @@ const containerStyle = {
   alignSelf: 'stretch',
   height: '100vh',
 };
-
-function formatDuration(durationSec) {
-  return new Date(durationSec * 1000).toISOString().substr(12, 7);
-}
 
 function Results(props) {
   const {name, wing} = props;
