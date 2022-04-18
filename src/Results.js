@@ -99,11 +99,13 @@ function Results(props) {
     }
   }
   const valid = task.turnpoints.length === turnpointIndex;
-  const saveEntry = {igc: props.igc, valid, date: igc.date, name, wing};
+  const saveEntry = {igc: props.igc, valid, date: igc.date, name, wing, duration: taskDuration};
+
   if (!sent) {
-    fetch('https://g.co', { method: 'POST', body: JSON.stringify(saveEntry)}).then((resp) => {
+    fetch('https://lnk30ei5aj.execute-api.eu-west-3.amazonaws.com/dev/save',
+        {method: 'POST', body: JSON.stringify(saveEntry)}).then((resp) => {
       setEntryReceived(resp.ok);
-    })
+    }).catch((e) => console.error('sending', e));
     setSent(true);
   }
 

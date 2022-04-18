@@ -11,10 +11,9 @@ const style = {
 }
 
 function App() {
-  // State for IGC and XCTSK uploads
   const [igc, setIgc] = useState();
   const [name, setName] = useState();
-  const [wing, setWing] = useState();
+  const [wing, setWing] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
   console.log(igc, name, submitted);
@@ -48,6 +47,7 @@ function App() {
         <Uploader file={igc} fileSetter={setIgc} message={'Fichier igc'}/>
         <input style={inputStyle} type={'text'} value={name} onChange={(e) => setName(e.target.value)} placeholder={'Nom Prénom'}/>
         <select style={inputStyle} name={'wing'} onChange={(e) => setWing(e.target.value)} value={wing}>
+          <option value={''}>-</option>
           <option value={'A'}>EN-A</option>
           <option value={'B'}>EN-B</option>
           <option value={'C'}>EN-C</option>
