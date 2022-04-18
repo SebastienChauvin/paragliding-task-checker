@@ -16,8 +16,6 @@ function Submit() {
   const [wing, setWing] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  console.log(igc, name, submitted);
-
   useEffect(() => {
     setName(localStorage.getItem('name') ?? '');
     setWing(localStorage.getItem('wing'));

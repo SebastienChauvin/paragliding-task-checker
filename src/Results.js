@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Circle, MapContainer, Polyline, TileLayer} from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import moment from 'moment';
@@ -29,10 +29,18 @@ const containerStyle = {
 
 function Results(props) {
   const {name, wing} = props;
-  let igc = IGCParser.parse(props.igc);
   const [progress, setProgress] = useState(1);
   const [sent, setSent] = useState(false);
   const [entryReceived, setEntryReceived] = useState(false);
+  const [igc, setIgc] = useState();
+
+  useEffect(() => {
+    try {
+      setIgc(IGCParser.parse(props.igc, {lenient: true}));
+    } catch (e) {
+      console.error('Cannot parse', props.igc, e);
+    }
+  }, [props.igc]);
 
   let turnpointIndex = 0;
   let turnpoints = [];  // Turnpoints to show
@@ -42,6 +50,10 @@ function Results(props) {
   let turnpointTimes = [];
   let taskDuration = 0;
   let essIndex = 0;
+
+  if (!igc) {
+    return <span>Fichier IGC ?</span>;
+  }
 
   for (let i = 0;
       i < igc.fixes.length && i / igc.fixes.length < progress;
@@ -96,7 +108,14 @@ function Results(props) {
     }
   }
   const valid = task.turnpoints.length === turnpointIndex;
-  const saveEntry = {igc: props.igc, valid, date: igc.date, name, wing, duration: taskDuration};
+  const saveEntry = {
+    igc: props.igc,
+    valid,
+    date: igc.date,
+    name,
+    wing,
+    duration: taskDuration,
+  };
 
   if (!sent) {
     fetch('https://lnk30ei5aj.execute-api.eu-west-3.amazonaws.com/dev/save',
