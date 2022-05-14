@@ -2,6 +2,8 @@ import {Link} from 'react-router-dom';
 import {useState} from 'react';
 import {formatDuration} from './utils';
 
+const rankingUrl = `https://lnk30ei5aj.execute-api.eu-west-3.amazonaws.com/dev/ranking/`;
+
 function Wing(props) {
   const {type} = props;
   const [list, setList] = useState(null);
@@ -11,7 +13,7 @@ function Wing(props) {
     console.log('loading');
     setFetched(true);
     fetch(
-        `https://lnk30ei5aj.execute-api.eu-west-3.amazonaws.com/dev/ranking/${type}`,
+        `${rankingUrl}${type}`,
         {method: 'GET'}).then((resp) => resp.json()).then(data => {
       setList(data.list);
       console.log(list);
@@ -39,7 +41,7 @@ function Attempts() {
     console.log('loading');
     setFetched(true);
     fetch(
-        `https://lnk30ei5aj.execute-api.eu-west-3.amazonaws.com/dev/ranking/attempts`,
+        `${rankingUrl}attempts`,
         {method: 'GET'}).then((resp) => resp.json()).then(data => {
       setList(data.list);
       console.log(list);
