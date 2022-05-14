@@ -31,7 +31,7 @@ function Wing(props) {
   </div>;
 }
 
-function Attempts(props) {
+function Attempts() {
   const [list, setList] = useState(null);
   const [fetched, setFetched] = useState(false);
 
