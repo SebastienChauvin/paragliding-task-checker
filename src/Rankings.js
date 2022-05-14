@@ -31,6 +31,33 @@ function Wing(props) {
   </div>;
 }
 
+function Attempts(props) {
+  const [list, setList] = useState(null);
+  const [fetched, setFetched] = useState(false);
+
+  if (!fetched) {
+    console.log('loading');
+    setFetched(true);
+    fetch(
+        `https://lnk30ei5aj.execute-api.eu-west-3.amazonaws.com/dev/ranking/attempts`,
+        {method: 'GET'}).then((resp) => resp.json()).then(data => {
+      setList(data.list);
+      console.log(list);
+    }).catch((e) => console.error('receiving', e));
+  }
+
+  return <div style={{width: '600px', float: 'left'}}>
+    <h2>Nombre de vols valides</h2>
+    <table style={{padding: 10, textAlign: 'left'}}>
+      {list?.map((e, i) => <tr>
+        <td style={{paddingRight: 30}}>{i + 1}.</td>
+        <td style={{paddingRight: 30}}>{e.name}</td>
+        <td style={{paddingRight: 30, fontSize: 16}}>{e.attempts}</td>
+      </tr>)}
+    </table>
+  </div>;
+}
+
 export function Rankings() {
   return <>
     <div className={'row'}>
@@ -39,6 +66,7 @@ export function Rankings() {
       <Wing type={'C'}/>
       <Wing type={'D'}/>
       <Wing type={'CCC'}/>
+      <Attempts/>
     </div>
     <div style={{backgroundColor: '#ddd', padding: 20, marginTop: 30}}>
     <Link to={'/declaration'}>Declarer un vol</Link>
