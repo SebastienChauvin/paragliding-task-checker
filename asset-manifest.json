@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/paragliding-task-checker/static/css/main.2203ad4c.chunk.css",
-    "main.js": "/paragliding-task-checker/static/js/main.dd50493b.chunk.js",
-    "main.js.map": "/paragliding-task-checker/static/js/main.dd50493b.chunk.js.map",
+    "main.js": "/paragliding-task-checker/static/js/main.03e90b29.chunk.js",
+    "main.js.map": "/paragliding-task-checker/static/js/main.03e90b29.chunk.js.map",
     "runtime-main.js": "/paragliding-task-checker/static/js/runtime-main.e6b83378.js",
     "runtime-main.js.map": "/paragliding-task-checker/static/js/runtime-main.e6b83378.js.map",
     "static/css/2.b4ebbe46.chunk.css": "/paragliding-task-checker/static/css/2.b4ebbe46.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.b4ebbe46.chunk.css",
     "static/js/2.2294efb6.chunk.js",
     "static/css/main.2203ad4c.chunk.css",
-    "static/js/main.dd50493b.chunk.js"
+    "static/js/main.03e90b29.chunk.js"
   ]
 }
